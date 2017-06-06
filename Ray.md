@@ -39,11 +39,11 @@ Unity中关于射线的有一个非常重要的函数类Physcics类，该类有R
 
 * 1. Ray Camera.main.ScreenPointRay(Vector3 pos)返回一条射线Ray从摄像机到屏幕指定一个点
 
-* 1. Ray 射线结构体
+* 2. Ray 射线结构体
 
-* 1. RaycastHit 光线投射碰撞信息
+* 3. RaycastHit 光线投射碰撞信息
 
-* 1. bool Physics.Raycast注意：如果一个球型体的内部到外部用光线投射，返回为假。
+* 4. bool Physics.Raycast注意：如果一个球型体的内部到外部用光线投射，返回为假。
 
 **【参数理解】**
 
@@ -67,13 +67,13 @@ Physics.Raycast(位置position, 方向forward, 光线投射碰撞到的物体out
 
 * 1. 第一个参数是射线的起点
 
-* 1. 第二个参数是射线的方向
+* 2. 第二个参数是射线的方向
 
-* 1. 第三个参数是碰撞的信息
+* 3. 第三个参数是碰撞的信息
 
-* 1. 第四个参数是射线的长度
+* 4. 第四个参数是射线的长度
 
-* 1. 第五个参数是遮罩过滤层
+* 5. 第五个参数是遮罩过滤层
 
 #### 示例1：鼠标点击Cube让其旋转
 
@@ -153,7 +153,67 @@ public class test06 : MonoBehaviour
      (1 << 10) | (1 << 8) 打开第10层和第8层
 ```
 
+#### 示例4：具体示例：子弹检测
 
+```C#
+using UnityEngine;
+using System.Collections;
+
+public class RayTest : MonoBehaviour {
+
+	void Update()
+	    {
+	        #region //由于子弹运行速度太快,不可能在子弹上放Collider组件去检测碰撞:@@@@@@@@@@@@
+	        Vector3 oldPos = transform.position;//在Update中,在执行第一帧的时候,子弹的位置
+	        transform.Translate(Vector3.right * 500 * Time.deltaTime);
+	        float length = (transform.position - oldPos).magnitude;//子弹第一帧到之后的每一帧时,经过的长度
+	        RaycastHit hit;
+	        if (Physics.Raycast(oldPos,this.transform.right,out hit,length))
+	        {
+	            if(hit.collider.gameObject.name == "目标")
+	            Debug.Log(hit.point);
+	        }
+	        #endregion
+	    }
+
+	      void OnTriggerEnter()
+	      {
+	          print("Collider检测");
+	      }
+	    //步骤:
+	    //1- 声明一个位置,记录在第一帧时,子弹的位置
+	    //2- 让子弹移动
+	    //3- 在下一帧时,记录下一帧的位置-第一帧的位置
+	    //4- 这样可以获得这两帧之间的距离
+	    //5- .magnitude方法可以获取向量的长度
+	    //6- 通过射线,参数包含这个获取的向量长度,来推算子弹是否与物体发生了碰撞
+	    //7- hit.point是碰撞点
+```
+
+#### 示例5：具体示例：让子弹弹痕紧贴接触面的效果
+
+```C#
+  public GameObject go;  //一个Quad预设图片
+	void Start () {
+
+	}
+
+	void Update () {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitinfo;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Physics.Raycast(ray, out hitinfo))
+            {
+                print(hitinfo.transform.name);
+                GameObject gg = Instantiate(go,hitinfo.point, Quaternion.identity) as GameObject;
+                gg.transform.LookAt(hitinfo.point - hitinfo.normal);
+                gg.transform.Translate(Vector3.back * 0.01f);
+            }
+        }
+
+	}
+```
 
 
 
