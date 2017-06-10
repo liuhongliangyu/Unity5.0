@@ -71,6 +71,30 @@ Avatar是Mecanim的一个如此重要方面，他需要被配置地符合你的�
 
 一旦你保存了场景，你就会看到一个带有骨骼映射的新Avatar配置检视器。
 
+![](https://nts.newbieol.com/static/k25/02_%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83/14_%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F_Animator%E5%9F%BA%E7%A1%80/images/20170415214009.jpg)
+
+检视器显示哪些骨骼是需要的还有哪些骨骼是可选的-可选的骨骼运动可以自动用差值计算出来。为了让Mecanim产生有效的陪，你的骨架需要至少含有必须的骨骼在适当的位置。为了提高查找匹配Avatar的机会，可以使用反应身体部位的命名你的骨骼（像“LeftArm” “RightFoream”这样的名称都是合适的）。
+
+如果模型没有产生一个有效的匹配，你可以手动按照类似Mecanim内部的处理方式做一下：
+
+1. Sample Bind-pose:采用绑定姿势（尝试让模型接近它建模时候的姿势，一个合理的最初的姿势）
+
+1. Automap：自动映射（从最初的姿势创建一个骨骼映射）
+
+1. Enforce T-pose 强制T字姿势：强制让模型更接近T字姿势，这是Mecanim使用的默认姿势。
+
+![](https://nts.newbieol.com/static/k25/02_%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83/14_%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F_Animator%E5%9F%BA%E7%A1%80/images/20170415214219.jpg)
+
+如果自动映射（Mapping->Automap）完全或者部分失败，你可以通过从场景或者体系结构视图拖拽它们来赋值到骨骼。如果Mecanim认为骨骼合适，它会用绿色在Avatar检视器中显示，否则会以红色显示。
+
+最后如果骨骼被正确赋予了，但是角色不是在正确的姿势，你将会看到消息“Character not in T-Pose（角色不是在 T字姿势）”。你可以尝试Enforce T-pose(强制T字姿势)或者旋转余下的骨骼到T字姿势。
+
+### 人体模板（human template）
+
+你可以用“人体模板文件”（扩展名.ht)的形式保存雇个人到你Avatar骨架的映射到磁盘上，你可以在任意角色上重用这个映射。这个非常有用，比如，如果你的动画使用一致布局和命名约定到所有的骨架上但是Mecanim不知道如何解释它。你可以为模板载入.ht文件，这样手动重映射只需做一次。
+
+![](https://nts.newbieol.com/static/k25/02_%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83/14_%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F_Animator%E5%9F%BA%E7%A1%80/images/20170415214348.jpg)
+
 
 
 
