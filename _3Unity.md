@@ -115,7 +115,7 @@ http://blog.csdn.net/pleasecallmewhy/article/details/8519577
 
 主摄像机默认的Depth为-1，之后不管创建几个新的摄像机，默认的Depth都为0的。通过修改Depth属性，数值越大，越在最后渲染显示。即：数值大的层会遮挡住数值小的层。
 
-## 系统资源_Light 光源
+## 系统资源Light 光源
 
 灯光用来照亮场景和对象，可以创造完美的视觉气氛。灯光可以用来模拟太阳、燃烧的火柴、探照灯、手电筒、枪火光、爆炸等等。
 
@@ -181,7 +181,7 @@ http://blog.csdn.net/pleasecallmewhy/article/details/8519577
 
 ![](https://nts.newbieol.com/static/k25/02_%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83/02_%E5%BC%95%E6%93%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img/img3_%E5%9B%BE%E7%89%8711.png)
 
-![]()https://nts.newbieol.com/static/k25/02_%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83/02_%E5%BC%95%E6%93%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img/img3_%E5%9B%BE%E7%89%8711.png
+![](https://nts.newbieol.com/static/k25/02_%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83/02_%E5%BC%95%E6%93%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img/img3_%E5%9B%BE%E7%89%8712.png)
 
 2. 创建Area Light
 
